@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andina Trails – Moto Enduro en la Puna de Atacama</title>
+  <meta name="description" content="Excursiones en moto enduro por la Puna de Atacama. Operador boutique local, flota propia, hostería y guías con décadas de experiencia. Antofagasta de la Sierra, Catamarca." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* ============================================================
+       VARIABLES & RESET
+       ============================================================ */
+    :root {
+      --terracotta:   #B85C38;
+      --terracotta-dk:#8E3E1E;
+      --azul:         #1B3B6F;
+      --azul-lt:      #274F94;
+      --piedra:       #4A4A4A;
+      --piedra-lt:    #7A7A7A;
+      --fondo:        #F9F6F0;
+      --blanco:       #FFFFFF;
+      --negro:        #111111;
+      --arena:        #E8E0D0;
+      --font-titulo:  'Montserrat', sans-serif;
+      --font-cuerpo:  'Lato', sans-serif;
+      --nav-h:        72px;
+      --radius:       6px;
+      --sombra:       0 4px 24px rgba(0,0,0,0.12);
+      --sombra-fuerte:0 8px 40px rgba(0,0,0,0.22);
+      --trans:        0.28s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-cuerpo);
+      color: var(--piedra);
+      background: var(--fondo);
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+    ul  { list-style: none; }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-titulo);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.75rem;
+    }
+
+    h2.section-title {
+      font-family: var(--font-titulo);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--azul);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    p.section-sub {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--piedra-lt);
+      max-width: 640px;
+    }
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      transition: background var(--trans), box-shadow var(--trans);
+    }
+
+    #navbar.scrolled {
+      background: rgba(27, 59, 111, 0.97);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    }
+
+    #navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .nav-logo {
+      font-family: var(--font-titulo);
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--blanco);
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--terracotta); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-titulo);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      transition: color var(--trans);
+    }
+    .nav-links a:hover { color: var(--terracotta); }
+
+    .nav-cta {
+      background: var(--terracotta);
+      color: var(--blanco) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: var(--radius);
+      transition: background var(--trans) !important;
+    }
+    .nav-cta:hover { background: var(--terracotta-dk) !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--blanco);
+      border-radius: 2px;
+      transition: transform var(--trans), opacity var(--trans);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--azul);
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+        box-shadow: var(--sombra-fuerte);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1rem; color: var(--blanco); }
+      .nav-cta { text-align: center; }
+    }
+
+    /* ============================================================
+       1. HERO
+       ============================================================ */
+    #hero {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* PERSONALIZACIÓN PENDIENTE: reemplazar esta URL con tu imagen/video real */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to bottom,
+          rgba(10,20,45,0.55) 0%,
+          rgba(10,20,45,0.35) 50%,
+          rgba(10,20,45,0.7) 100%),
+        url('https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=1800&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      background-attachment: fixed;
+    }
+
+    /* Subtle dust-grain texture overlay for atmosphere */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 1rem;
+      max-width: 860px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-titulo);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--terracotta);
+    }
+
+    .hero-title {
+      font-family: var(--font-titulo);
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      font-weight: 900;
+      color: var(--blanco);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+    }
+    .hero-title .accent { color: var(--terracotta); }
+
+    .hero-sub {
+      font-family: var(--font-cuerpo);
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--terracotta);
+      color: var(--blanco);
+      font-family: var(--font-titulo);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background var(--trans), transform var(--trans), box-shadow var(--trans);
+      box-shadow: 0 4px 20px rgba(184,92,56,0.4);
+    }
+    .btn-primary:hover {
+      background: var(--terracotta-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(184,92,56,0.5);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--blanco);
+      font-family: var(--font-titulo);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      border: 1.5px solid rgba(255,255,255,0.55);
+      cursor: pointer;
+      transition: border-color var(--trans), background var(--trans), transform var(--trans);
+    }
+    .btn-outline:hover {
+      border-color: var(--blanco);
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--font-titulo);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: bounce 2.2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ============================================================
+       2. SOBRE NOSOTROS
+       ============================================================ */
+    #nosotros {
+      padding: 7rem 0;
+      background: var(--blanco);
+    }
+
+    .nosotros-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .nosotros-img-wrap {
+      position: relative;
+    }
+
+    .nosotros-img-main {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--sombra-fuerte);
+    }
+
+    /* Floating badge on image */
+    .nosotros-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--terracotta);
+      color: var(--blanco);
+      font-family: var(--font-titulo);
+      font-weight: 900;
+      text-align: center;
+      padding: 1.4rem;
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      line-height: 1.15;
+    }
+    .nosotros-badge .big { font-size: 2rem; display: block; }
+    .nosotros-badge .small { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.9; }
+
+    .nosotros-text .section-sub {
+      margin-bottom: 2rem;
+    }
+
+    .nosotros-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .pillar {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .pillar i {
+      font-size: 1.1rem;
+      color: var(--terracotta);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .pillar p {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--piedra);
+    }
+    .pillar strong { display: block; color: var(--azul); font-weight: 700; margin-bottom: 2px; }
+
+    @media (max-width: 900px) {
+      .nosotros-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .nosotros-badge { right: 1rem; }
+      .nosotros-img-main { height: 300px; }
+    }
+
+    /* ============================================================
+       3. GALERÍA
+       ============================================================ */
+    #galeria {
+      padding: 7rem 0;
+      background: var(--fondo);
+    }
+
+    .galeria-header {
+      margin-bottom: 3rem;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 260px 260px;
+      gap: 12px;
+    }
+
+    .galeria-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    .galeria-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .galeria-item:nth-child(5) {
+      grid-column: span 2;
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .galeria-item:hover img { transform: scale(1.06); }
+
+    .galeria-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(27,59,111,0.7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity var(--trans);
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+    }
+    .galeria-item:hover .galeria-overlay { opacity: 1; }
+
+    .galeria-overlay span {
+      font-family: var(--font-titulo);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blanco);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: var(--radius);
+      box-shadow: 0 0 80px rgba(0,0,0,0.6);
+      object-fit: contain;
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--blanco);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color var(--trans);
+    }
+    .lb-close:hover { color: var(--terracotta); }
+
+    .lb-arrow {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--blanco);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--trans);
+    }
+    .lb-arrow:hover { background: var(--terracotta); border-color: var(--terracotta); }
+    .lb-prev { left: 1.5rem; }
+    .lb-next { right: 1.5rem; }
+
+    @media (max-width: 768px) {
+      .galeria-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .galeria-item:nth-child(1) { grid-column: span 2; grid-row: span 1; height: 220px; }
+      .galeria-item:nth-child(5) { grid-column: span 2; }
+      .galeria-item { height: 160px; }
+    }
+
+    /* ============================================================
+       4. PAQUETES
+       ============================================================ */
+    #paquetes {
+      padding: 7rem 0;
+      background: var(--azul);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle topographic line bg */
+    #paquetes::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse at 80% 20%, rgba(184,92,56,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    #paquetes .section-label { color: var(--terracotta); }
+    #paquetes h2.section-title { color: var(--blanco); }
+    #paquetes p.section-sub { color: rgba(255,255,255,0.7); }
+
+    .paquetes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .paquete-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform var(--trans), box-shadow var(--trans), border-color var(--trans);
+      display: flex;
+      flex-direction: column;
+    }
+    .paquete-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+      border-color: var(--terracotta);
+    }
+
+    .paquete-card.featured {
+      border-color: var(--terracotta);
+      background: rgba(184,92,56,0.1);
+      position: relative;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: var(--terracotta);
+      color: var(--blanco);
+      font-family: var(--font-titulo);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+    }
+
+    /* PERSONALIZACIÓN PENDIENTE: reemplazar URLs de imagen de cada paquete */
+    .paquete-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .paquete-body {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .paquete-nivel {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-titulo);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+    .nivel-alta    { background: rgba(184,92,56,0.2); color: #FF8C5A; }
+    .nivel-media   { background: rgba(255,200,80,0.15); color: #FFD060; }
+    .nivel-extrema { background: rgba(255,80,80,0.15); color: #FF6060; }
+
+    .paquete-body h3 {
+      font-family: var(--font-titulo);
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--blanco);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .paquete-meta {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .paquete-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      font-family: var(--font-titulo);
+      font-weight: 600;
+    }
+    .paquete-meta i { color: var(--terracotta); font-size: 0.75rem; }
+
+    .paquete-desc {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.25rem;
+    }
+
+    .paquete-includes {
+      margin-bottom: 1.5rem;
+    }
+    .paquete-includes p {
+      font-family: var(--font-titulo);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .paquete-includes ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.35rem 0.5rem;
+    }
+    .paquete-includes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.4;
+    }
+    .paquete-includes i { color: var(--terracotta); font-size: 0.7rem; margin-top: 3px; flex-shrink: 0; }
+
+    .paquete-precio {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .paquete-precio .label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: var(--font-titulo);
+      font-weight: 600;
+    }
+    .paquete-precio .value {
+      font-family: var(--font-titulo);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--blanco);
+      margin: 0.2rem 0 1rem;
+    }
+
+    .btn-consultar {
+      display: block;
+      width: 100%;
+      background: var(--terracotta);
+      color: var(--blanco);
+      font-family: var(--font-titulo);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0.85rem;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background var(--trans), transform var(--trans);
+    }
+    .btn-consultar:hover {
+      background: var(--terracotta-dk);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 900px) {
+      .paquetes-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    }
+
+    /* ============================================================
+       5. EXPERIENCIA 360°
+       ============================================================ */
+    #experiencia {
+      padding: 7rem 0;
+      background: var(--blanco);
+    }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .exp-card {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--arena);
+      transition: box-shadow var(--trans), transform var(--trans);
+    }
+    .exp-card:hover {
+      box-shadow: var(--sombra);
+      transform: translateY(-4px);
+    }
+
+    .exp-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dk));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.1rem;
+      font-size: 1.4rem;
+      color: var(--blanco);
+      box-shadow: 0 6px 20px rgba(184,92,56,0.3);
+    }
+
+    .exp-card h4 {
+      font-family: var(--font-titulo);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--azul);
+      margin-bottom: 0.5rem;
+    }
+    .exp-card p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--piedra-lt);
+    }
+
+    @media (max-width: 900px) {
+      .exp-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .exp-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       6. FLOTA Y SEGURIDAD
+       ============================================================ */
+    #seguridad {
+      padding: 7rem 0;
+      background: var(--fondo);
+    }
+
+    .seguridad-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .seguridad-img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--sombra-fuerte);
+    }
+
+    .seguridad-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .seg-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .seg-icon {
+      width: 48px; height: 48px;
+      background: var(--azul);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--blanco);
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(27,59,111,0.25);
+    }
+
+    .seg-text h4 {
+      font-family: var(--font-titulo);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--azul);
+      margin-bottom: 0.3rem;
+    }
+    .seg-text p {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--piedra-lt);
+    }
+
+    @media (max-width: 900px) {
+      .seguridad-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .seguridad-img { height: 260px; }
+    }
+
+    /* ============================================================
+       7. TESTIMONIOS
+       ============================================================ */
+    #testimonios {
+      padding: 7rem 0;
+      background: var(--azul);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #testimonios::before {
+      content: '\201C';
+      position: absolute;
+      top: -2rem; left: 3%;
+      font-size: 22rem;
+      font-family: Georgia, serif;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    #testimonios .section-label { color: var(--terracotta); }
+    #testimonios h2.section-title { color: var(--blanco); }
+
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .testi-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: transform var(--trans), background var(--trans);
+    }
+    .testi-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.11);
+    }
+
+    .testi-stars {
+      color: #FFD060;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .testi-quote {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .testi-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--terracotta);
+    }
+
+    .testi-author-info strong {
+      display: block;
+      font-family: var(--font-titulo);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--blanco);
+    }
+    .testi-author-info span {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    @media (max-width: 900px) {
+      .testimonios-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    }
+
+    /* ============================================================
+       8. FAQ
+       ============================================================ */
+    #faq {
+      padding: 7rem 0;
+      background: var(--blanco);
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .faq-intro .section-sub { max-width: 100%; }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--arena);
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      font-family: var(--font-titulo);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--azul);
+      text-align: left;
+      transition: color var(--trans);
+    }
+    .faq-q:hover { color: var(--terracotta); }
+
+    .faq-q i {
+      font-size: 0.85rem;
+      color: var(--terracotta);
+      transition: transform var(--trans);
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-q i { transform: rotate(45deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.38s ease, padding var(--trans);
+    }
+    .faq-item.open .faq-a { max-height: 500px; }
+
+    .faq-a p {
+      font-size: 0.93rem;
+      line-height: 1.75;
+      color: var(--piedra-lt);
+      padding-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .faq-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* ============================================================
+       9. CONTACTO
+       ============================================================ */
+    #contacto {
+      padding: 7rem 0;
+      background: var(--fondo);
+    }
+
+    .contacto-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contacto-info .section-sub { max-width: 100%; margin-bottom: 2rem; }
+
+    .contacto-datos {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contacto-dato {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      color: var(--piedra);
+    }
+    .contacto-dato i {
+      color: var(--terracotta);
+      font-size: 1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .contacto-dato strong { display: block; font-family: var(--font-titulo); color: var(--azul); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+
+    /* Form */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-field.full { grid-column: span 2; }
+
+    .form-field label {
+      font-family: var(--font-titulo);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--azul);
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: var(--blanco);
+      border: 1.5px solid var(--arena);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      font-family: var(--font-cuerpo);
+      font-size: 0.92rem;
+      color: var(--piedra);
+      transition: border-color var(--trans), box-shadow var(--trans);
+      width: 100%;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--azul);
+      box-shadow: 0 0 0 3px rgba(27,59,111,0.12);
+    }
+    .form-field textarea { resize: vertical; min-height: 110px; }
+
+    .btn-form {
+      grid-column: span 2;
+      background: var(--terracotta);
+      color: var(--blanco);
+      font-family: var(--font-titulo);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background var(--trans), transform var(--trans), box-shadow var(--trans);
+      box-shadow: 0 4px 16px rgba(184,92,56,0.3);
+    }
+    .btn-form:hover {
+      background: var(--terracotta-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(184,92,56,0.4);
+    }
+
+    #form-thanks {
+      display: none;
+      text-align: center;
+      padding: 3rem;
+      background: var(--blanco);
+      border-radius: 10px;
+      border: 1.5px solid var(--arena);
+    }
+    #form-thanks i { font-size: 2.5rem; color: var(--terracotta); margin-bottom: 1rem; }
+    #form-thanks h3 { font-family: var(--font-titulo); color: var(--azul); font-size: 1.4rem; margin-bottom: 0.5rem; }
+    #form-thanks p { color: var(--piedra-lt); font-size: 0.95rem; }
+
+    @media (max-width: 900px) {
+      .contacto-layout { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 540px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-field.full { grid-column: span 1; }
+      .btn-form { grid-column: span 1; }
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer {
+      background: var(--negro);
+      color: rgba(255,255,255,0.65);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand .nav-logo {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+      max-width: 260px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+    .footer-social a {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      transition: background var(--trans), color var(--trans);
+    }
+    .footer-social a:hover { background: var(--terracotta); color: var(--blanco); }
+
+    .footer-col h5 {
+      font-family: var(--font-titulo);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blanco);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-col li a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--trans);
+    }
+    .footer-col li a:hover { color: var(--terracotta); }
+
+    .footer-col address {
+      font-style: normal;
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-col address i { color: var(--terracotta); margin-right: 0.35rem; width: 14px; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer-bottom a { color: var(--terracotta); transition: opacity var(--trans); }
+    .footer-bottom a:hover { opacity: 0.75; }
+
+    @media (max-width: 900px) {
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 540px) {
+      .footer-top { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       WHATSAPP FLOTANTE
+       ============================================================ */
+    /* PERSONALIZACIÓN PENDIENTE: cambiar número en el enlace href */
+    #whatsapp-float {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #25D366;
+      color: var(--blanco);
+      padding: 0.75rem 1.2rem;
+      border-radius: 100px;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      font-family: var(--font-titulo);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: transform var(--trans), box-shadow var(--trans);
+      text-decoration: none;
+    }
+    #whatsapp-float:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 10px 32px rgba(37,211,102,0.55);
+    }
+    #whatsapp-float i { font-size: 1.2rem; }
+    .wa-label { display: inline; }
+
+    @media (max-width: 480px) {
+      #whatsapp-float { padding: 0.85rem; border-radius: 50%; width: 52px; height: 52px; justify-content: center; }
+      .wa-label { display: none; }
+    }
+
+    /* ============================================================
+       UTILITY / ANIMATIONS
+       ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger delays for children */
+    .stagger > *:nth-child(1) { transition-delay: 0.05s; }
+    .stagger > *:nth-child(2) { transition-delay: 0.15s; }
+    .stagger > *:nth-child(3) { transition-delay: 0.25s; }
+    .stagger > *:nth-child(4) { transition-delay: 0.35s; }
+    .stagger > *:nth-child(5) { transition-delay: 0.45s; }
+    .stagger > *:nth-child(6) { transition-delay: 0.55s; }
+    .stagger > *:nth-child(7) { transition-delay: 0.65s; }
+    .stagger > *:nth-child(8) { transition-delay: 0.75s; }
+
+    /* Accessibility: reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+      .hero-bg { background-attachment: scroll; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <nav id="navbar" role="navigation" aria-label="Menú principal">
+    <div class="container">
+      <a href="#hero" class="nav-logo">Andina<span>Trails</span></a>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links" role="menubar">
+        <li role="none"><a href="#nosotros" role="menuitem">Nosotros</a></li>
+        <li role="none"><a href="#galeria" role="menuitem">Galería</a></li>
+        <li role="none"><a href="#paquetes" role="menuitem">Excursiones</a></li>
+        <li role="none"><a href="#seguridad" role="menuitem">Flota & Seguridad</a></li>
+        <li role="none"><a href="#testimonios" role="menuitem">Testimonios</a></li>
+        <li role="none"><a href="#contacto" role="menuitem">Contacto</a></li>
+        <!-- PERSONALIZACIÓN PENDIENTE: número de WhatsApp -->
+        <li role="none"><a href="https://wa.me/5493837123456" target="_blank" class="nav-cta" role="menuitem"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       1. HERO
+       ============================================================ -->
+  <section id="hero" aria-label="Portada">
+    <!-- PERSONALIZACIÓN PENDIENTE: reemplazar con video o imagen propia -->
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Antofagasta de la Sierra · Catamarca · Argentina</p>
+      <h1 class="hero-title">Andina Trails<br><span class="accent">Moto Expedition</span></h1>
+      <p class="hero-sub">Excursiones en moto enduro por la Puna de Atacama.<br>Experiencias únicas, seguridad extrema, guías locales apasionados.</p>
+      <div class="hero-ctas">
+        <a href="#paquetes" class="btn-primary"><i class="fas fa-compass"></i> Ver excursiones</a>
+        <!-- PERSONALIZACIÓN PENDIENTE: número de WhatsApp -->
+        <a href="https://wa.me/5493837123456?text=Hola%2C%20quiero%20consultar%20sobre%20excursiones%20en%20moto%20enduro" target="_blank" class="btn-outline"><i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Descubrí</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       2. SOBRE NOSOTROS
+       ============================================================ -->
+  <section id="nosotros" aria-labelledby="nosotros-titulo">
+    <div class="container">
+      <div class="nosotros-grid">
+
+        <div class="nosotros-img-wrap fade-up">
+          <!-- PERSONALIZACIÓN PENDIENTE: reemplazar imagen -->
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=80"
+            alt="Moto enduro en los volcanes de la Puna"
+            class="nosotros-img-main"
+            loading="lazy"
+          />
+          <div class="nosotros-badge">
+            <span class="big">+15</span>
+            <span class="small">años en la Puna</span>
+          </div>
+        </div>
+
+        <div class="nosotros-text fade-up">
+          <span class="section-label">Quiénes somos</span>
+          <h2 class="section-title" id="nosotros-titulo">No somos una agencia.<br>Somos la Puna.</h2>
+          <p class="section-sub">
+            Somos operadores locales de Antofagasta de la Sierra con raíces profundas en el altiplano atacameño. Cada excursión que ofrecemos es posible porque somos dueños de todo: la flota de motos enduro, los vehículos 4×4, la hostería boutique donde dormís. Sin intermediarios, sin compromisos a medias.
+          </p>
+          <p class="section-sub" style="margin-top:1rem">
+            Nuestros guías no son instructores de manual: nacieron y crecieron entre volcanes, salares y comunidades originarias. Esa diferencia se siente en cada kilómetro.
+          </p>
+
+          <div class="nosotros-pillars stagger">
+            <div class="pillar fade-up">
+              <i class="fas fa-motorcycle"></i>
+              <p><strong>Flota propia</strong>KTM EXC y Honda CRF preparados para la alta montaña, mantenidos cada 500 km.</p>
+            </div>
+            <div class="pillar fade-up">
+              <i class="fas fa-house-chimney"></i>
+              <p><strong>Hostería boutique</strong>10 habitaciones con desayuno de altura y cenas típicas de la región.</p>
+            </div>
+            <div class="pillar fade-up">
+              <i class="fas fa-users"></i>
+              <p><strong>Grupos reducidos</strong>Salidas privadas o de hasta 6 personas para garantizar atención real.</p>
+            </div>
+            <div class="pillar fade-up">
+              <i class="fas fa-satellite-dish"></i>
+              <p><strong>Conectividad Starlink</strong>Comunicación satelital y seguimiento en tiempo real en toda la ruta.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       3. GALERÍA
+       ============================================================ -->
+  <section id="galeria" aria-labelledby="galeria-titulo">
+    <div class="container">
+      <div class="galeria-header">
+        <span class="section-label">La Puna en imágenes</span>
+        <h2 class="section-title" id="galeria-titulo">Cada imagen es un relato<br>que esperás vivir.</h2>
+      </div>
+
+      <!-- PERSONALIZACIÓN PENDIENTE: reemplazar todas las imágenes con las propias -->
+      <div class="galeria-grid" id="galeria-grid">
+
+        <div class="galeria-item" data-index="0">
+          <img src="https://images.unsplash.com/photo-1551524559-8af4e6624178?w=900&auto=format&fit=crop&q=80" alt="Moto enduro en el volcán" loading="lazy" />
+          <div class="galeria-overlay"><span>Volcán Galán</span></div>
+        </div>
+
+        <div class="galeria-item" data-index="1">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format&fit=crop&q=80" alt="Salares de la Puna de Atacama" loading="lazy" />
+          <div class="galeria-overlay"><span>Salar de Antofalla</span></div>
+        </div>
+
+        <div class="galeria-item" data-index="2">
+          <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&auto=format&fit=crop&q=80" alt="Grupo en moto enduro" loading="lazy" />
+          <div class="galeria-overlay"><span>Circuito de los Volcanes</span></div>
+        </div>
+
+        <div class="galeria-item" data-index="3">
+          <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=600&auto=format&fit=crop&q=80" alt="Hostería boutique Andina" loading="lazy" />
+          <div class="galeria-overlay"><span>Hostería Andina Trails</span></div>
+        </div>
+
+        <div class="galeria-item" data-index="4">
+          <img src="https://images.unsplash.com/photo-1547234935-80c7145ec969?w=900&auto=format&fit=crop&q=80" alt="Laguna altiplánica al atardecer" loading="lazy" />
+          <div class="galeria-overlay"><span>Lagunas Altiplánicas</span></div>
+        </div>
+
+        <div class="galeria-item" data-index="5">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop&q=80" alt="Equipo de moto enduro" loading="lazy" />
+          <div class="galeria-overlay"><span>Equipamiento certificado</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
+    <button class="lb-close" id="lb-close" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+    <button class="lb-arrow lb-prev" id="lb-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+    <img id="lb-img" src="" alt="Imagen ampliada" />
+    <button class="lb-arrow lb-next" id="lb-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+  </div>
+
+
+  <!-- ============================================================
+       4. PAQUETES
+       ============================================================ -->
+  <section id="paquetes" aria-labelledby="paquetes-titulo">
+    <div class="container">
+      <span class="section-label">Excursiones en moto enduro</span>
+      <h2 class="section-title" id="paquetes-titulo">Tres intensidades.<br>Una sola pasión.</h2>
+      <p class="section-sub">Cada paquete incluye alojamiento en nuestra hostería, comidas, equipo de seguridad, guía local y asistencia 4×4 en ruta. No hay letra chica.</p>
+
+      <div class="paquetes-grid stagger">
+
+        <!-- Paquete 1 -->
+        <div class="paquete-card fade-up" id="circuito-volcanes">
+          <!-- PERSONALIZACIÓN PENDIENTE: imagen del circuito volcanes -->
+          <img class="paquete-img" src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=700&auto=format&fit=crop&q=80" alt="Volcanes de la Puna" loading="lazy" />
+          <div class="paquete-body">
+            <span class="paquete-nivel nivel-alta"><i class="fas fa-fire"></i> Alta</span>
+            <h3>Circuito de los Volcanes</h3>
+            <div class="paquete-meta">
+              <span><i class="fas fa-calendar-days"></i> 3 días / 2 noches</span>
+              <span><i class="fas fa-route"></i> ~450 km</span>
+            </div>
+            <p class="paquete-desc">
+              Bordeamos el Volcán Galán (6.600 msnm), cruzamos la Laguna Blanca y descendemos por el cañadón de los flamencos. La ruta más fotogénica de la Puna atacameña.
+            </p>
+            <div class="paquete-includes">
+              <p>Incluye</p>
+              <ul>
+                <li><i class="fas fa-check"></i> Moto KTM/Honda</li>
+                <li><i class="fas fa-check"></i> Casco y protecciones</li>
+                <li><i class="fas fa-check"></i> Seguro de accidentes</li>
+                <li><i class="fas fa-check"></i> Guía local experto</li>
+                <li><i class="fas fa-check"></i> Asistencia 4×4</li>
+                <li><i class="fas fa-check"></i> Alojamiento hostería</li>
+                <li><i class="fas fa-check"></i> Comidas incluidas</li>
+                <li><i class="fas fa-check"></i> Starlink en ruta</li>
+              </ul>
+            </div>
+            <div class="paquete-precio">
+              <p class="label">Precio</p>
+              <!-- PERSONALIZACIÓN PENDIENTE: precio exacto -->
+              <p class="value">Consultar precio personalizado</p>
+              <a href="#contacto" class="btn-consultar">Consultar disponibilidad</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paquete 2 -->
+        <div class="paquete-card featured fade-up" id="travesia-lagunas">
+          <span class="featured-badge">Más elegido</span>
+          <!-- PERSONALIZACIÓN PENDIENTE: imagen de la travesía -->
+          <img class="paquete-img" src="https://images.unsplash.com/photo-1547234935-80c7145ec969?w=700&auto=format&fit=crop&q=80" alt="Lagunas altiplánicas" loading="lazy" />
+          <div class="paquete-body">
+            <span class="paquete-nivel nivel-media"><i class="fas fa-water"></i> Media</span>
+            <h3>Travesía de las Lagunas Altiplánicas</h3>
+            <div class="paquete-meta">
+              <span><i class="fas fa-calendar-days"></i> 2 días / 1 noche</span>
+              <span><i class="fas fa-route"></i> ~280 km</span>
+            </div>
+            <p class="paquete-desc">
+              Ideal para quienes se inician en el enduro de altura. Lagunas de colores, flamencos andinos y silencio absoluto a 3.500 msnm. Un bautismo que no se olvida.
+            </p>
+            <div class="paquete-includes">
+              <p>Incluye</p>
+              <ul>
+                <li><i class="fas fa-check"></i> Moto KTM/Honda</li>
+                <li><i class="fas fa-check"></i> Casco y protecciones</li>
+                <li><i class="fas fa-check"></i> Seguro de accidentes</li>
+                <li><i class="fas fa-check"></i> Guía local experto</li>
+                <li><i class="fas fa-check"></i> Asistencia 4×4</li>
+                <li><i class="fas fa-check"></i> Alojamiento hostería</li>
+                <li><i class="fas fa-check"></i> Comidas incluidas</li>
+                <li><i class="fas fa-check"></i> Starlink en ruta</li>
+              </ul>
+            </div>
+            <div class="paquete-precio">
+              <p class="label">Precio</p>
+              <!-- PERSONALIZACIÓN PENDIENTE: precio exacto -->
+              <p class="value">Consultar precio personalizado</p>
+              <a href="#contacto" class="btn-consultar">Consultar disponibilidad</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paquete 3 -->
+        <div class="paquete-card fade-up" id="full-puna">
+          <!-- PERSONALIZACIÓN PENDIENTE: imagen Full Puna -->
+          <img class="paquete-img" src="https://images.unsplash.com/photo-1551524559-8af4e6624178?w=700&auto=format&fit=crop&q=80" alt="Full Puna Enduro extremo" loading="lazy" />
+          <div class="paquete-body">
+            <span class="paquete-nivel nivel-extrema"><i class="fas fa-skull"></i> Extrema</span>
+            <h3>Full Puna Enduro</h3>
+            <div class="paquete-meta">
+              <span><i class="fas fa-calendar-days"></i> 5 días / 4 noches</span>
+              <span><i class="fas fa-route"></i> ~800 km</span>
+            </div>
+            <p class="paquete-desc">
+              La expedición completa. Salares, volcanes, quebradas, comunidades originarias y pasos de alta montaña. Para los que quieren conocer la Puna de verdad, sin atajos.
+            </p>
+            <div class="paquete-includes">
+              <p>Incluye</p>
+              <ul>
+                <li><i class="fas fa-check"></i> Moto KTM/Honda</li>
+                <li><i class="fas fa-check"></i> Casco y protecciones</li>
+                <li><i class="fas fa-check"></i> Seguro de accidentes</li>
+                <li><i class="fas fa-check"></i> Guía local experto</li>
+                <li><i class="fas fa-check"></i> Asistencia 4×4</li>
+                <li><i class="fas fa-check"></i> Alojamiento hostería</li>
+                <li><i class="fas fa-check"></i> Comidas incluidas</li>
+                <li><i class="fas fa-check"></i> Starlink en ruta</li>
+              </ul>
+            </div>
+            <div class="paquete-precio">
+              <p class="label">Precio</p>
+              <!-- PERSONALIZACIÓN PENDIENTE: precio exacto -->
+              <p class="value">Consultar precio personalizado</p>
+              <a href="#contacto" class="btn-consultar">Consultar disponibilidad</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       5. EXPERIENCIA 360°
+       ============================================================ -->
+  <section id="experiencia" aria-labelledby="exp-titulo">
+    <div class="container">
+      <div style="text-align:center; max-width:600px; margin:0 auto 0">
+        <span class="section-label">La experiencia completa</span>
+        <h2 class="section-title" id="exp-titulo">Todo lo que necesitás,<br>todo incluido.</h2>
+        <p class="section-sub" style="margin:0 auto">No traés más que ganas de rodar. Nosotros ponemos el resto.</p>
+      </div>
+
+      <div class="exp-grid stagger">
+
+        <div class="exp-card fade-up">
+          <div class="exp-icon"><i class="fas fa-motorcycle"></i></div>
+          <h4>Motos preparadas</h4>
+          <p>KTM EXC 450 y Honda CRF 450L calibradas para altiplano. Revisión técnica completa antes de cada salida.</p>
+        </div>
+
+        <div class="exp-card fade-up">
+          <div class="exp-icon"><i class="fas fa-truck-pickup"></i></div>
+          <h4>Vehículo 4×4 de apoyo</h4>
+          <p>Toyota Hilux con repuestos, botiquín de alta montaña, carburante y equipo de rescate siempre en ruta.</p>
+        </div>
+
+        <div class="exp-card fade-up">
+          <div class="exp-icon"><i class="fas fa-house-chimney"></i></div>
+          <h4>Hostería boutique</h4>
+          <p>Desayuno de altura con productos regionales. Cenas típicas puneñas. Tu moto guardada y lavada cada noche.</p>
+        </div>
+
+        <div class="exp-card fade-up">
+          <div class="exp-icon"><i class="fas fa-map-location-dot"></i></div>
+          <h4>Mapas GPS</h4>
+          <p>Track detallado en tu dispositivo. Puntos de interés, señalización de riesgo y waypoints en tiempo real.</p>
+        </div>
+
+        <div class="exp-card fade-up">
+          <div class="exp-icon"><i class="fas fa-camera-retro"></i></div>
+          <h4>Fotografía con drone</h4>
+          <p>Llevamos piloto de drone para inmortalizar los momentos más épicos de la expedición. Las imágenes son tuyas.</p>
+        </div>
+
+        <div class="exp-card fade-up">
+          <div class="exp-icon"><i class="fas fa-satellite-dish"></i></div>
+          <h4>Starlink satelital</h4>
+          <p>Comunicación garantizada en zonas sin señal. Tu familia puede seguirte en tiempo real desde casa.</p>
+        </div>
+
+        <div class="exp-card fade-up">
+          <div class="exp-icon"><i class="fas fa-utensils"></i></div>
+          <h4>Gastronomía regional</h4>
+          <p>Locro, tamales, quinoa de altura y asados bajo las estrellas. La Puna se saborea también en la mesa.</p>
+        </div>
+
+        <div class="exp-card fade-up">
+          <div class="exp-icon"><i class="fas fa-people-group"></i></div>
+          <h4>Comunidades originarias</h4>
+          <p>Visitamos artesanos y pastores de altura. Un intercambio cultural que ningún tour masivo puede ofrecer.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       6. FLOTA Y SEGURIDAD
+       ============================================================ -->
+  <section id="seguridad" aria-labelledby="seg-titulo">
+    <div class="container">
+      <div class="seguridad-layout">
+
+        <div class="fade-up">
+          <!-- PERSONALIZACIÓN PENDIENTE: imagen de flota/seguridad -->
+          <img
+            class="seguridad-img"
+            src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&auto=format&fit=crop&q=80"
+            alt="Flota de motos Andina Trails"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="fade-up">
+          <span class="section-label">Flota & Seguridad</span>
+          <h2 class="section-title" id="seg-titulo">La aventura más segura<br>de la Puna.</h2>
+          <p class="section-sub">La Puna es exigente. Nuestros protocolos son más exigentes todavía.</p>
+
+          <div class="seguridad-list stagger">
+
+            <div class="seg-item fade-up">
+              <div class="seg-icon"><i class="fas fa-wrench"></i></div>
+              <div class="seg-text">
+                <h4>Mantenimiento cada 500 km</h4>
+                <p>Cada moto recibe servicio completo (aceite, frenos, cadena, filtros) antes de superar los 500 km. Ni uno más.</p>
+              </div>
+            </div>
+
+            <div class="seg-item fade-up">
+              <div class="seg-icon"><i class="fas fa-kit-medical"></i></div>
+              <div class="seg-text">
+                <h4>Guías con primeros auxilios</h4>
+                <p>Todo el equipo tiene certificación en primeros auxilios y manejo de emergencias en altura (AMS, HACE).</p>
+              </div>
+            </div>
+
+            <div class="seg-item fade-up">
+              <div class="seg-icon"><i class="fas fa-radio"></i></div>
+              <div class="seg-text">
+                <h4>Comunicación satelital</h4>
+                <p>Starlink + radios VHF para comunicación interna. Sin puntos ciegos en más de 800 km de ruta.</p>
+              </div>
+            </div>
+
+            <div class="seg-item fade-up">
+              <div class="seg-icon"><i class="fas fa-shield-halved"></i></div>
+              <div class="seg-text">
+                <h4>Seguros vigentes</h4>
+                <p>Seguro de responsabilidad civil del operador y cobertura de accidentes personales para cada pasajero.</p>
+              </div>
+            </div>
+
+            <div class="seg-item fade-up">
+              <div class="seg-icon"><i class="fas fa-location-dot"></i></div>
+              <div class="seg-text">
+                <h4>Seguimiento en tiempo real</h4>
+                <p>GPS tracker en cada moto y vehículo de apoyo. Posición actualizada cada 60 segundos disponible para familia.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       7. TESTIMONIOS
+       ============================================================ -->
+  <section id="testimonios" aria-labelledby="testi-titulo">
+    <div class="container">
+      <div style="text-align:center; max-width:580px; margin:0 auto">
+        <span class="section-label">Lo que dicen nuestros riders</span>
+        <h2 class="section-title" id="testi-titulo">Las palabras que más<br>nos enorgullecen.</h2>
+      </div>
+
+      <div class="testimonios-grid stagger">
+
+        <div class="testi-card fade-up">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">
+            "Hice enduro en Marruecos, Perú y Portugal. La Puna con Andina Trails fue otra dimensión. El nivel de organización, la calidez de los guías y la hostería superaron todo lo que esperaba. Vuelvo en octubre."
+          </p>
+          <div class="testi-author">
+            <!-- PERSONALIZACIÓN PENDIENTE: fotos de testimonio reales o de stock con licencia -->
+            <img class="testi-avatar" src="https://i.pravatar.cc/100?img=11" alt="Martín Sosa" loading="lazy" />
+            <div class="testi-author-info">
+              <strong>Martín Sosa</strong>
+              <span>Buenos Aires · Circuito de los Volcanes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card fade-up">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">
+            "Mi marido fue en moto y yo los acompañé en el 4×4. Los dos tuvimos la experiencia de nuestra vida. Los paisajes te dejan sin palabras y la atención de Ricardo y su equipo es increíble. Gracias infinitas."
+          </p>
+          <div class="testi-author">
+            <img class="testi-avatar" src="https://i.pravatar.cc/100?img=47" alt="Laura Fernández" loading="lazy" />
+            <div class="testi-author-info">
+              <strong>Laura Fernández</strong>
+              <span>Córdoba · Travesía de las Lagunas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card fade-up">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">
+            "Soy médico y me preocupa la seguridad en este tipo de expediciones. Andina Trails me dio confianza desde el primer mensaje. El protocolo de altura, el seguimiento y los guías son de nivel profesional real."
+          </p>
+          <div class="testi-author">
+            <img class="testi-avatar" src="https://i.pravatar.cc/100?img=33" alt="Dr. Diego Ríos" loading="lazy" />
+            <div class="testi-author-info">
+              <strong>Dr. Diego Ríos</strong>
+              <span>Mendoza · Full Puna Enduro</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       8. FAQ
+       ============================================================ -->
+  <section id="faq" aria-labelledby="faq-titulo">
+    <div class="container">
+      <div class="faq-layout">
+
+        <div class="faq-intro fade-up">
+          <span class="section-label">Preguntas frecuentes</span>
+          <h2 class="section-title" id="faq-titulo">Todo lo que<br>querés saber.</h2>
+          <p class="section-sub">Si tu pregunta no está acá, escribinos por WhatsApp. Respondemos en menos de 2 horas.</p>
+          <br>
+          <a href="https://wa.me/5493837123456" target="_blank" class="btn-primary" style="margin-top:0.5rem">
+            <i class="fa-brands fa-whatsapp"></i> Escribirnos
+          </a>
+        </div>
+
+        <div class="faq-list fade-up">
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              ¿Necesito experiencia previa en moto enduro?
+              <i class="fas fa-plus"></i>
+            </button>
+            <div class="faq-a">
+              <p>Para la Travesía de las Lagunas (nivel medio) es suficiente con saber manejar moto de calle o ATV y estar dispuesto a aprender. Para el Circuito de los Volcanes se recomienda experiencia off-road previa. El Full Puna Enduro está orientado a riders con experiencia sólida en tierra. En todos los casos hacemos una evaluación breve el primer día para ajustar la ruta a tu nivel.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              ¿Qué equipamiento personal debo traer?
+              <i class="fas fa-plus"></i>
+            </button>
+            <div class="faq-a">
+              <p>Nosotros proveemos moto, casco integral homologado, rodilleras, coderas y chaleco de protección. Vos traés ropa técnica de enduro (pantalón y chaqueta con protecciones o sin, pero abrigada), botas de moto off-road, guantes y ropa de abrigo para la noche (las temperaturas en la Puna bajan a 0°C o menos en cualquier época). Te enviamos una lista detallada al confirmar la reserva.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              ¿Cómo es el clima en la Puna de Atacama?
+              <i class="fas fa-plus"></i>
+            </button>
+            <div class="faq-a">
+              <p>El clima puneño es extremo e impredecible. A 3.500–4.500 msnm podés tener sol intenso, viento fuerte y frío intenso el mismo día. La temporada ideal es de abril a noviembre (fuera de las lluvias altiplánicas del verano). Las mañanas son frías, los mediodías soleados y las noches muy frías. Siempre informamos el pronóstico extendido antes de cada salida y adaptamos el plan si es necesario.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              ¿Mi acompañante puede venir en el vehículo 4×4?
+              <i class="fas fa-plus"></i>
+            </button>
+            <div class="faq-a">
+              <p>¡Claro que sí! Es una de nuestras opciones más elegidas: uno rueda en moto y el otro acompaña en la Hilux de apoyo junto al guía auxiliar. El 4×4 recorre exactamente el mismo circuito, con las mismas paradas y experiencias. El precio de la excursión incluye este servicio para un acompañante por grupo. Consultanos si son varios acompañantes.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       9. CONTACTO
+       ============================================================ -->
+  <section id="contacto" aria-labelledby="contacto-titulo">
+    <div class="container">
+      <div class="contacto-layout">
+
+        <div class="contacto-info fade-up">
+          <span class="section-label">Contacto</span>
+          <h2 class="section-title" id="contacto-titulo">Planificá<br>tu expedición.</h2>
+          <p class="section-sub">Cada salida es única. Contanos cuándo querés ir, cuántos son y qué excursión te interesa. Armamos tu propuesta personalizada sin compromiso.</p>
+
+          <div class="contacto-datos">
+            <div class="contacto-dato">
+              <i class="fas fa-location-dot"></i>
+              <div>
+                <strong>Dirección</strong>
+                Antofagasta de la Sierra, Catamarca, Argentina
+              </div>
+            </div>
+            <div class="contacto-dato">
+              <i class="fa-brands fa-whatsapp"></i>
+              <div>
+                <!-- PERSONALIZACIÓN PENDIENTE: número de WhatsApp -->
+                <strong>WhatsApp</strong>
+                <a href="https://wa.me/5493837123456" target="_blank" style="color:var(--terracotta)">+54 9 3837 123456</a>
+              </div>
+            </div>
+            <div class="contacto-dato">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <!-- PERSONALIZACIÓN PENDIENTE: email real -->
+                <strong>Email</strong>
+                <a href="mailto:info@andinatrails.com.ar" style="color:var(--terracotta)">info@andinatrails.com.ar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-up">
+          <form id="contacto-form" novalidate>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+              </div>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+              </div>
+              <div class="form-field full">
+                <label for="paquete">Excursión de interés</label>
+                <select id="paquete" name="paquete">
+                  <option value="">— Seleccioná un paquete —</option>
+                  <option value="volcanes">Circuito de los Volcanes (3D/2N)</option>
+                  <option value="lagunas">Travesía de las Lagunas (2D/1N)</option>
+                  <option value="fullpuna">Full Puna Enduro (5D/4N)</option>
+                  <option value="personalizado">Quiero armar una salida personalizada</option>
+                </select>
+              </div>
+              <div class="form-field full">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Contanos cuándo querés venir, cuántos son, nivel de experiencia…"></textarea>
+              </div>
+              <button type="submit" class="btn-form"><i class="fas fa-paper-plane"></i> &nbsp;Enviar consulta</button>
+            </div>
+          </form>
+
+          <div id="form-thanks">
+            <i class="fas fa-circle-check"></i>
+            <h3>¡Consulta recibida!</h3>
+            <p>Te respondemos en menos de 24 horas con tu propuesta personalizada. También podés escribirnos por WhatsApp para respuesta inmediata.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo">Andina<span>Trails</span></a>
+          <p>Operador boutique de turismo aventura en la Puna de Atacama. Motos propias, hostería propia, pasión genuina por el altiplano catamarqueño.</p>
+          <div class="footer-social">
+            <!-- PERSONALIZACIÓN PENDIENTE: enlaces a redes sociales reales -->
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://wa.me/5493837123456" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Excursiones</h5>
+          <ul>
+            <li><a href="#circuito-volcanes">Circuito de los Volcanes</a></li>
+            <li><a href="#travesia-lagunas">Travesía de las Lagunas</a></li>
+            <li><a href="#full-puna">Full Puna Enduro</a></li>
+            <li><a href="#contacto">Salida personalizada</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>La empresa</h5>
+          <ul>
+            <li><a href="#nosotros">Quiénes somos</a></li>
+            <li><a href="#experiencia">Experiencia 360°</a></li>
+            <li><a href="#seguridad">Flota & Seguridad</a></li>
+            <li><a href="#faq">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <address>
+            <p><i class="fas fa-location-dot"></i>Antofagasta de la Sierra<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Catamarca, Argentina</p>
+            <!-- PERSONALIZACIÓN PENDIENTE: número y email reales -->
+            <p><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/5493837123456" style="color:rgba(255,255,255,0.55)">+54 9 3837 123456</a></p>
+            <p><i class="fas fa-envelope"></i><a href="mailto:info@andinatrails.com.ar" style="color:rgba(255,255,255,0.55)">info@andinatrails.com.ar</a></p>
+          </address>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Andina Trails. Todos los derechos reservados.</p>
+        <p>Diseño y desarrollo web · <a href="#hero">andinatrails.com.ar</a></p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       WHATSAPP FLOTANTE
+       PERSONALIZACIÓN PENDIENTE: número de WhatsApp (reemplazar 5493837123456)
+       ============================================================ -->
+  <a
+    id="whatsapp-float"
+    href="https://wa.me/5493837123456?text=Hola%2C%20quiero%20consultar%20sobre%20una%20excursi%C3%B3n%20en%20moto%20enduro"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="wa-label">WhatsApp</span>
+  </a>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script>
+    /* -----------------------------------------------
+       NAVBAR: scroll effect + hamburger
+    ----------------------------------------------- */
+    const navbar   = document.getElementById('navbar');
+    const hamburger= document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close nav on link click (mobile)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+
+    /* -----------------------------------------------
+       LIGHTBOX
+    ----------------------------------------------- */
+    const galleryItems = document.querySelectorAll('#galeria-grid .galeria-item');
+    const lightbox  = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lb-img');
+    const lbClose   = document.getElementById('lb-close');
+    const lbPrev    = document.getElementById('lb-prev');
+    const lbNext    = document.getElementById('lb-next');
+    let currentLbIndex = 0;
+
+    const galleryImages = Array.from(galleryItems).map(item => ({
+      src: item.querySelector('img').src,
+      alt: item.querySelector('img').alt
+    }));
+
+    function openLightbox(index) {
+      currentLbIndex = index;
+      lbImg.src = galleryImages[index].src;
+      lbImg.alt = galleryImages[index].alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function changeLb(dir) {
+      currentLbIndex = (currentLbIndex + dir + galleryImages.length) % galleryImages.length;
+      lbImg.src = galleryImages[currentLbIndex].src;
+      lbImg.alt = galleryImages[currentLbIndex].alt;
+    }
+
+    galleryItems.forEach((item, i) => {
+      item.addEventListener('click', () => openLightbox(i));
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', () => changeLb(-1));
+    lbNext.addEventListener('click', () => changeLb(1));
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')       closeLightbox();
+      if (e.key === 'ArrowLeft')    changeLb(-1);
+      if (e.key === 'ArrowRight')   changeLb(1);
+    });
+
+    /* -----------------------------------------------
+       FAQ accordion
+    ----------------------------------------------- */
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item    = btn.closest('.faq-item');
+        const isOpen  = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-q').setAttribute('aria-expanded', false);
+        });
+        // Toggle current
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', true);
+        }
+      });
+    });
+
+    /* -----------------------------------------------
+       FORM submit (frontend only — conectar a backend)
+    ----------------------------------------------- */
+    document.getElementById('contacto-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // PERSONALIZACIÓN PENDIENTE: integrar con Formspree, EmailJS u otro servicio
+      this.style.display = 'none';
+      document.getElementById('form-thanks').style.display = 'block';
+    });
+
+    /* -----------------------------------------------
+       SCROLL ANIMATIONS (IntersectionObserver)
+    ----------------------------------------------- */
+    const fadeEls = document.querySelectorAll('.fade-up');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
